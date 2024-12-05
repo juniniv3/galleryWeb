@@ -1,4 +1,3 @@
-import "./App.css";
 import { useAppDispatch } from "./hooks/reduxHooks";
 import { loading } from "./state/auth/auth";
 
