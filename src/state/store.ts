@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { imageSlice } from "./images/images";
+import { imageSlice } from "./images/imagesSlice";
 import { authSlice } from "./auth";
 
 export const store = configureStore({
