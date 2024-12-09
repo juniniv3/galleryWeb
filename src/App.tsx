@@ -1,9 +1,4 @@
-import { useAppDispatch } from "./hooks/reduxHooks";
-import { loginThunk } from "./state/auth";
-
 function App() {
-  const dispatcher = useAppDispatch();
-  dispatcher(loginThunk("luisjesusflorezmoreno@gmail.com", "123456"));
   return (
     <>
       <a
