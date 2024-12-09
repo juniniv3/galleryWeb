@@ -1,5 +1,5 @@
 import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { LoginPage } from "./pages/login/LoginPage";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
 import { useEffect } from "react";
@@ -36,8 +36,12 @@ export const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/login" element={<LoginPage />} />
+        {authSelector.status === "authenticated" ? (
+          <Route path="/*" element={<App />} />
+        ) : (
+          <Route path="/auth/login" element={<LoginPage />} />
+        )}
+        <Route path="/*" element={<Navigate to="/auth/login"></Navigate>} />
       </Routes>
     </BrowserRouter>
   );
