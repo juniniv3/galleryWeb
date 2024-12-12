@@ -33,7 +33,7 @@ export const imageSlice = createSlice({
     },
     loadImagesSuccess: (state, { payload }) => {
       state.loading = false;
-      state.images = payload;
+      state.images = payload.data;
     },
     loadImagesError: (state, { payload }) => {
       state.loading = false;

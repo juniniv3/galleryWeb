@@ -8,7 +8,7 @@ import { Routing } from "./Routes.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-    <Routing />
+      <Routing />
     </Provider>
   </StrictMode>
 );

@@ -1,4 +1,3 @@
-import App from "./App";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { LoginPage } from "./pages/login/LoginPage";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
@@ -6,6 +5,7 @@ import { useEffect } from "react";
 import { FirebaseAuth } from "./Firebase/Config";
 import { onAuthStateChanged } from "firebase/auth";
 import { login, logout } from "./state/auth";
+import { HomePage } from "./pages/home/HomePage";
 
 export const Routing = () => {
   const authSelector = useAppSelector((state) => state.auth);
@@ -37,7 +37,7 @@ export const Routing = () => {
     <BrowserRouter>
       <Routes>
         {authSelector.status === "authenticated" ? (
-          <Route path="/*" element={<App />} />
+          <Route path="/*" element={<HomePage />} />
         ) : (
           <Route path="/auth/login" element={<LoginPage />} />
         )}
