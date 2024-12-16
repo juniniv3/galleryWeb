@@ -8,13 +8,14 @@ export const updateImage = async (image: {
   url: any;
 }) => {
   try {
-    await updateDoc(doc(FirebaseFirestore, "images", image.id), {
+    const updatedImage = await updateDoc(doc(FirebaseFirestore, "images", image.id), {
       name: image.name,
       description: image.description,
       url: image.url,
     });
     return {
       ok: true,
+      image: updatedImage,
     };
   } catch (error) {
     return {

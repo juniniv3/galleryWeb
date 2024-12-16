@@ -22,15 +22,23 @@ export const imageSlice = createSlice({
   name: "images",
   initialState,
   reducers: {
-    addImage: (state, { payload }) => {
-      state.images.push(payload);
-    },
-    removeImage: (state, { payload }) => {
-      state.images = state.images.filter((image) => image.id !== payload);
-    },
     loadingImages: (state) => {
       state.loading = true;
     },
+    addImage: (state, { payload }) => {
+      state.images.push(payload);
+    },
+    updateImageSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.images = state.images.map((image) =>
+        image.id === payload.id ? payload : image
+      );
+    },
+    deleteImageSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.images = state.images.filter((image) => image.id !== payload);
+    },
+
     loadImagesSuccess: (state, { payload }) => {
       state.loading = false;
       state.images = payload.data;
@@ -44,7 +52,8 @@ export const imageSlice = createSlice({
 
 export const {
   addImage,
-  removeImage,
+  updateImageSuccess,
+  deleteImageSuccess,
   loadingImages,
   loadImagesSuccess,
   loadImagesError,
