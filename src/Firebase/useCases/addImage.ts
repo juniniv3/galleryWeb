@@ -2,20 +2,20 @@ import { addDoc, collection } from "firebase/firestore/lite";
 import { FirebaseFirestore } from "../Config";
 
 export const addImage = async (image: {
-  id: string;
   name: any;
   description: any;
   url: any;
 }) => {
   try {
-    await addDoc(collection(FirebaseFirestore, "images"), {
+    const addedDoc =  await addDoc(collection(FirebaseFirestore, "images"), {
       name: image.name,
       description: image.description,
       url: image.url,
     });
-
+    console.log("Document written with ID: ", addedDoc.id);
     return {
       ok: true,
+      id: addedDoc.id,
     };
   } catch (error) {
     return {
