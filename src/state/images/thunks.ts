@@ -26,7 +26,7 @@ export const deleteImageThunk = (imageId: string) => {
     dispatch(loadingImages());
     const response = await deleteImage(imageId);
     if (response.ok) {
-      dispatch(deleteImageSuccess(response));
+      dispatch(deleteImageSuccess(imageId));
     } else {
       dispatch(loadImagesError({ errorMessage: "Error al eliminar imagen" }));
     }
