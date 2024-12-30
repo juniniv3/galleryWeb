@@ -12,3 +12,7 @@ body {
   background-color: #fbfbfd;
   padding: 30px;
 }
+
+body:has(.overleyDisplayed){
+  overflow: hidden;
+}

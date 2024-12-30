@@ -7,6 +7,7 @@ import { ImageForm } from "./components/ImageForm/ImageForm";
 export const HomePage = () => {
   const dispatch = useAppDispatch();
   const allImages = useAppSelector((state) => state.images);
+  const [showForm, setShowForm] = useState(false);
   const [filteredImages, setFilteredImages] = useState<any[]>([]);
   console.log(allImages, filteredImages);
   const filterImages = (searchTerm: string) => {
@@ -42,6 +43,12 @@ export const HomePage = () => {
         type="text"
         className="bg-white border-2 rounded-full p-2 pl-4 mb-8"
       ></input>
+      <button
+        onClick={() => setShowForm(true)}
+        className="mt-8 h-12  bg-primary text-white font-bold p-4 "
+      >
+        Add Image
+      </button>
       <div className="grid grid-cols-3 gap-6">
         {filteredImages.map((image) => (
           <ImageCard
@@ -54,7 +61,7 @@ export const HomePage = () => {
         ))}
       </div>
 
-      <ImageForm></ImageForm>
+      {showForm && <ImageForm showForm={setShowForm}></ImageForm>}
     </div>
   );
 };
