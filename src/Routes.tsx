@@ -41,7 +41,12 @@ export const Routing = () => {
         ) : (
           <Route path="/auth/login" element={<LoginPage />} />
         )}
-        <Route path="/*" element={<Navigate to="/auth/login"></Navigate>} />
+        {authSelector.status === "authenticated" && (
+          <Route path="/auth/login" element={<Navigate to="/"></Navigate>} />
+        )}
+        {authSelector.status === "unauthenticated" && (
+          <Route path="/*" element={<Navigate to="/auth/login"></Navigate>} />
+        )}
       </Routes>
     </BrowserRouter>
   );
