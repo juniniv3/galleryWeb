@@ -40,7 +40,7 @@ export const updateImageThunk = (image: {
   id: string;
   name: any;
   description: any;
-  url: any;
+  url: string | undefined;
 }) => {
   return async (dispatch: Dispatch) => {
     dispatch(loadingImages());

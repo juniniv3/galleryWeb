@@ -5,17 +5,17 @@ export const updateImage = async (image: {
   id: string;
   name: any;
   description: any;
-  url: any;
+  url: string | undefined;
 }) => {
   try {
-    const updatedImage = await updateDoc(doc(FirebaseFirestore, "images", image.id), {
+    await updateDoc(doc(FirebaseFirestore, "images", image.id), {
       name: image.name,
       description: image.description,
       url: image.url,
     });
     return {
       ok: true,
-      image: updatedImage,
+      image,
     };
   } catch (error) {
     return {

@@ -12,7 +12,6 @@ export const addImage = async (image: {
       description: image.description,
       url: image.url,
     });
-    console.log("Document written with ID: ", addedDoc.id);
     return {
       ok: true,
       id: addedDoc.id,
