@@ -1,7 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface AuthState {
-  status: 'checking' | 'unauthenticated' | 'authenticated';
+  status: "checking" | "unauthenticated" | "authenticated";
   uid: string | null;
   email: string | null;
   displayName: string | null;
@@ -10,7 +10,7 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  status: 'checking',
+  status: "checking",
   uid: null,
   email: null,
   displayName: null,
@@ -19,34 +19,31 @@ const initialState: AuthState = {
 };
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
-    login: (state, {payload}) => {
-      state.status = 'authenticated';
+    login: (state, { payload }) => {
+      state.status = "authenticated";
       state.uid = payload.uid;
       state.email = payload.email;
       state.displayName = payload.displayName;
       state.profilePic = payload.profilePic;
       state.errorMessage = payload.errorMessage;
     },
-    logout: (state, {payload}) => {
-      state.status = 'unauthenticated';
+    logout: (state, { payload }) => {
+      state.status = "unauthenticated";
       state.uid = null;
       state.email = null;
       state.displayName = null;
       state.profilePic = null;
       state.errorMessage = payload.errorMessage;
     },
-    loading: state => {
-      state.status = 'checking';
-      console.log(state);
-      console.log('loading');
+    loading: (state) => {
+      state.status = "checking";
     },
   },
 });
 
-export const {login, logout, loading} = authSlice.actions;
+export const { login, logout, loading } = authSlice.actions;
 
 export default authSlice.reducer;
- 
