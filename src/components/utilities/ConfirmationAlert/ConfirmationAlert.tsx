@@ -29,9 +29,12 @@ export const ConfirmationAlert = ({
   return (
     <div
       onClick={clickOverlay}
-      className={`overleyDisplayed fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center ${
-        showAlert ? "" : "hidden"
-      }`}
+      className={`${
+        showAlert
+          ? "overleyDisplayed fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center "
+          : "hidden"
+      }  
+      `}
     >
       <div className="flex flex-col p-10 absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg">
         {label && <h1 className="text-4xl min-w-96">{label}</h1>}

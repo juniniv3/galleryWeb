@@ -3,13 +3,15 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { loadImagesThunk } from "../../state/images";
 import { ImageCard } from "./components/ImageCard/ImageCard";
 import { ImageForm } from "./components/ImageForm/ImageForm";
+import { ConfirmationAlert } from "../../components/utilities/ConfirmationAlert/ConfirmationAlert";
+import { GlobalLoader } from "../../components/utilities/GlobalLoader/GlobalLoader";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
   const allImages = useAppSelector((state) => state.images);
+  const loading = useAppSelector((state) => state.images.loading);
   const [showForm, setShowForm] = useState(false);
   const [filteredImages, setFilteredImages] = useState<any[]>([]);
-  console.log(allImages, filteredImages);
   const filterImages = (searchTerm: string) => {
     if (!searchTerm) {
       return allImages.images;
@@ -62,6 +64,16 @@ export const HomePage = () => {
       </div>
 
       {showForm && <ImageForm showForm={setShowForm}></ImageForm>}
+      {
+        <ConfirmationAlert
+          label="Problema"
+          description="asdad"
+          onCancel={() => console.log(123)}
+          onAccept={() => console.log(123)}
+          visible={true}
+        ></ConfirmationAlert>
+      }
+      {loading && <GlobalLoader></GlobalLoader>}
     </div>
   );
 };
