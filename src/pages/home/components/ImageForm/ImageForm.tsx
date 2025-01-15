@@ -46,6 +46,7 @@ export const ImageForm = ({
         })
       );
     }
+    showForm(false);
   };
   return (
     <div

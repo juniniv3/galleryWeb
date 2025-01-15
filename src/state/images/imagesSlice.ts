@@ -27,6 +27,7 @@ export const imageSlice = createSlice({
     },
     addImage: (state, { payload }) => {
       state.images.push(payload);
+      state.loading = false;
     },
     updateImageSuccess: (state, { payload }) => {
       state.loading = false;
